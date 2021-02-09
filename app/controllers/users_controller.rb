@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: %i[show edit update destroy]
 
   def show
     @user = User.find(params[:id])
@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Profile updated successfully'
     else
@@ -29,5 +28,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end
