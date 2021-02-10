@@ -10,6 +10,7 @@
                 <ul class="list-group">
                     <% @user.posts.each do |post| %>
                     <%= @user.first_name %> <%= @user.last_name %> <%= post.created_at.strftime("%d/%m/%Y posted at: %H:%M") %>
+                    <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
                     <li class="list-group-item"><%= post.content %></li> 
             <% end %>
                 </ul> 
