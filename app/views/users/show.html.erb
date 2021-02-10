@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row"> 
+        <div class="show-cont">
+            <h2><%= @user.nickname %></h2>
+            <h6><%= @user.first_name %> <%= @user.last_name %></h6>
+            <h6><strong><%= @user.email %></strong></h6>
+            <p><%= @user.bio %></p>
+        </div> 
+       <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
+    </div>
+</div>
