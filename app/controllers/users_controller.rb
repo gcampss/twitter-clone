@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
+  # def index  
+  # @user = User.all -> index onde vai fazer os posts
+  # end
+
   def show
     @user = User.find(params[:id])
+    # - > todos os posts
   end
 
   def edit

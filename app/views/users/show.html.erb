@@ -5,6 +5,11 @@
             <h6><%= @user.first_name %> <%= @user.last_name %></h6>
             <h6><strong><%= @user.email %></strong></h6>
             <p><%= @user.bio %></p>
+            <ul class="list-group">
+            <% @user.posts.each do |post| %>
+            <li class="list-group-item"><%= post.content %></li>
+        <% end %>
+            </ul> %>
         </div> 
        <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
     </div>
