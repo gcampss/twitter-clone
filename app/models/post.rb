@@ -6,6 +6,6 @@ class Post < ApplicationRecord
   validates :content, presence: true
   validates :content, length: { maximum: 280 }
 
-  #has_one_attached :photo
+ #has_one_attached :photo
 
 end
