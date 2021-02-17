@@ -14,9 +14,9 @@
                         <%= @user.first_name %> <%= @user.last_name %>
 
                     <% if (Time.now - post.created_at) < 3600 %>
-                    <p> <%= "#{((Time.now - post.created_at) / 60).round }" %>  Minutes ago </p>
+                    <p> <%= "#{((Time.now - post.created_at) / 60).round }" %>m</p>
                     <% elsif (Time.now - post.created_at) < 60 * 60 * 24 %>
-                    <p> <%= "#{((Time.now - post.created_at) / 60 / 60).round }" %>H</p>
+                    <p> <%= "#{((Time.now - post.created_at) / 60 / 60).round }" %>h</p>
                     <% else %>
                     <p> <%= post.created_at.strftime("%d/%m/%Y") %> </p>
                     <% end %>
