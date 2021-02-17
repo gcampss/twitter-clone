@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @post = Post.new
   end
 
   def edit
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :nickname, :bio, :password)
+    params.require(:user).permit(:first_name, :last_name, :nickname, :bio, :password, :photo)
   end
 
   def set_user

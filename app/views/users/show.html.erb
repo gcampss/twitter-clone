@@ -6,6 +6,17 @@
             <h6><strong><%= @user.email %></strong></h6>
             <p><%= @user.bio %></p>
 
+            <div class="container">
+            <div class="form-tweet">
+                <%= simple_form_for [ @post ] do |f| %>
+                <%= f.input :content %>
+                <%= f.input :photo, as: :file %>
+                <%= f.submit "Submit review", class: "btn btn-primary" %>
+                <% end %>
+            </div>
+            </div>
+
+
                 <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
                 <%= link_to 'Twittar', new_post_path(@user), class: "btn btn-primary ml-2" %>
 
@@ -20,9 +31,13 @@
                     <% else %>
                     <p> <%= post.created_at.strftime("%d/%m/%Y") %> </p>
                     <% end %>
+                    
                   
 
                         <li class="list-group-item"><%= post.content %></li> 
+                        <% if post.photo.attached? %>
+                        <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
+                        <% end %>
             <div>
                 <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %>
             </div>
