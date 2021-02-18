@@ -4,23 +4,25 @@
             <h2><%= @user.nickname %></h2>
             <h6><%= @user.first_name %> <%= @user.last_name %></h6>
             <h6><strong><%= @user.email %></strong></h6>
-            <p><%= @user.bio %></p>
+            <p><%= @user.bio %></p> 
+            <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
 
             <div class="container">
             <div class="form-tweet">
                 <%= simple_form_for [ @post ] do |f| %>
-                <%= f.input :content %>
-                <%= f.input :photo, as: :file %>
-                <%= f.submit "Submit review", class: "btn btn-primary" %>
+                <%= f.input :content, :label => " ", placeholder: "What's in your head?" %> 
+                <%= f.input :photo, as: :file, :label => "➕ 📸" %>
+                <%= f.submit "Twittar", class: "btn btn-primary" %>
+                <%# <%= link_to 'Twittar', new_post_path(@user), class: "btn btn-primary ml-2" %>
                 <% end %>
             </div>
             </div>
 
 
-                <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
-                <%= link_to 'Twittar', new_post_path(@user), class: "btn btn-primary ml-2" %>
+                <%# <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
+                <%# link_to 'Twittar', new_post_path(@user), class: "btn btn-primary ml-2" %> 
 
-                    <ul class="list-group">
+                    <ul class="list-group mt-3">
                         <% @user.posts.each do |post| %>
                         <%= @user.first_name %> <%= @user.last_name %>
 
@@ -38,8 +40,9 @@
                         <% if post.photo.attached? %>
                         <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
                         <% end %>
+               
             <div>
-                <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm" %>
+                <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm mt-1" %>
             </div>
                         <% end %>
                     </ul> 
