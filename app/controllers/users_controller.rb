@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
-  # def index  
+  # def index
   # @user = User.all -> index onde vai fazer os posts
   # end
 
