@@ -22,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy!
+
+    redirect_to user_path(@post.user)
   end
 
   private
@@ -34,3 +38,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 end
+
