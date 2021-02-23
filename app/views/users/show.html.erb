@@ -1,12 +1,24 @@
 <div class="container">
     <div class="row"> 
+        <div class="search-position mt-1">
+            <%= form_tag user_path(@user), method: :get do %>
+                <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                id: "custom-search-bar",
+                placeholder: "Search Twitter-Clone"
+                %>
+                <%= submit_tag "Search", class: "btn btn-primary mt-1" %>
+            <% end %>
+
+        </div>
         <div class="show-cont">
             <h2><%= @user.nickname %></h2>
             <h6><%= @user.first_name %> <%= @user.last_name %></h6>
             <h6><strong><%= @user.email %></strong></h6>
             <p><%= @user.bio %></p> 
-            <p><%= @user.followers.length %>Followers</p>
-            <p><%= @user.followings.length %>Followings</p>
+            <p><%= @user.followers.length %> Followers</p>
+            <p><%= @user.followings.length %> Followings</p>
             <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
             <% if current_user == @user  %>
                 <div class="container">
@@ -23,7 +35,7 @@
 
                 <div class="photo-group">
                     <ul class="list-group mt-3">
-                            <% @user.posts.each do |post| %>
+                            <% @posts.each do |post| %>
                             <%= @user.first_name %> <%= @user.last_name %>
 
                         <% if (Time.now - post.created_at) < 3600 %>

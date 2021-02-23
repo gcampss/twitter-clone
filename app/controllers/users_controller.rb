@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
-  # def index
-  # @user = User.all -> index onde vai fazer os posts
-  # end
+  def index
+  end
+
+  def current_user_home
+    redirect_to current_user
+  end
 
   def show
     @user = User.find(params[:id])
+    if params[:query].present?
+      @posts = Post.search(params[:query])
+    else
+      @posts = @user.posts
+    end
     @post = Post.new
   end
 
@@ -22,10 +30,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy!
-
-    redirect_to user_path(@post.user)
   end
 
   private
@@ -38,4 +42,3 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 end
-
