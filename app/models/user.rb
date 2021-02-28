@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,4 +29,8 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followed_user
 
   has_one_attached :photo
+
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
 end
