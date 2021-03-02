@@ -34,3 +34,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   handleBio();
 });
+
+
+
+
