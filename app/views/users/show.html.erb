@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="search-position mt-1">
+      <div class="search-position mt-1 w-25 p-3">
         <%= form_tag user_path(@user), method: :get do %>
           <%= text_field_tag :query,
           params[:query],
@@ -19,27 +19,30 @@
             <% @user %>
         <%# </li> %>
         <% if @user.photo.attached? %>
-          <%= cl_image_tag @user.photo.key, :aspect_ratio=>"1:1", :background=>"#F4F4F4", :border=>"2px_solid_rgb:0E0000", :gravity=>"face", :radius=>"max", :width=>250, :crop=>"fill" %>
+          <%= cl_image_tag @user.photo.key, :aspect_ratio=>"1:1", :background=>"#FFFFFF", :border=>"2px_solid_rgb:0E0000", :gravity=>"face", :radius=>"max", :width=>250, :crop=>"fill" %>
         <% end %>
         <h6><%= @user.first_name %> <%= @user.last_name %></h6>
         <h6><strong><%= @user.email %></strong></h6>
         <div id="user-bio">
           <p><%= @user.bio %></p>
         </div>
-        <a href="" id="hide-button" class="btn btn-primary">HIDE</a>
-        <a href="" id="show-button" class="btn btn-primary d-none">SHOW</a>
+        <a href="" id="hide-button" class="btn btn-dark">HIDE</a>
+        <a href="" id="show-button" class="btn btn-dark d-none">SHOW</a>
         <p><%= @user.followers.length %> Followers</p>
         <p><%= @user.followings.length %> Followings</p>
         <%= link_to 'Edit profile', edit_user_path(@user), class: "btn btn-outline-secondary" %>
         <% if current_user == @user  %>
           <div class="container">
+           <div data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom">
             <div class="form-tweet-post">
               <%= simple_form_for [ @post ] do |f| %>
                   <%= f.input :content, :label => " ", placeholder: "What's in your head?" %>
                   <%= f.input :photo, as: :file, :label => "➕ 📸" %>
-                  <%= f.submit "Twittar", class: "btn btn-primary" %>
+                  <%= f.submit "Twittar", class: "btn btn-dark" %>
                   <%# <%= link_to 'Twittar', new_post_path(@user), class: "btn btn-primary ml-2" %>
               <% end %>
+            </div>
             </div>
           </div>
         <% end %>
@@ -58,10 +61,12 @@
               <% if post.photo.attached? %>
                 <%= cl_image_tag post.photo.key, height: 300, width: 400, crop: :fill %>
               <% end %>
-              <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm mt-1" %>
+              <div>
+              <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm mt-1 mb-3" %>
+              </div>
             <% end %>
-        </ul>
-      </div>
+         </ul>
+       </div>
     </div>
   </div>
 </div>
