@@ -32,4 +32,4 @@ const showBio = () => {
 
 // exporta o const
 
-export { handleBio }
+export { handleBio } 

@@ -24,7 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { handleBio } from "../components/hide_show_bio";
+import { handleBio } from "../components/hide_show_bio"; // importa a funçãp
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -32,7 +32,8 @@ import { handleBio } from "../components/hide_show_bio";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  handleBio();
+  handleBio(); // chama a função
+  AOS.init();
 });
 
 
